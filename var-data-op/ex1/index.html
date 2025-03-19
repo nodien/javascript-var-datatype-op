@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tính điểm trung bình</title>
+</head>
+<body>
+<h2>Nhập điểm của sinh viên</h2>
+
+<label for="physics">Điểm Vật lý:</label>
+<input type="number" id="physics" min="0" max="10" ><br><br>
+
+<label for="chemistry">Điểm Hóa học:</label>
+<input type="number" id="chemistry" min="0" max="10" ><br><br>
+
+<label for="biology">Điểm Sinh học:</label>
+<input type="number" id="biology" min="0" max="10" ><br><br>
+
+<button onclick="calculate()">Tính điểm</button>
+
+<h3 id="result"></h3>
+
+<script>
+    function calculate() {
+        let physics = parseFloat(document.getElementById("physics").value);
+        let chemistry = parseFloat(document.getElementById("chemistry").value);
+        let biology = parseFloat(document.getElementById("biology").value);
+
+        if (isNaN(physics) || isNaN(chemistry) || isNaN(biology) ||
+            physics < 0 || physics > 10 ||
+            chemistry < 0 || chemistry > 10 ||
+            biology < 0 || biology > 10) {
+            alert("Vui lòng nhập điểm hợp lệ (từ 0 đến 10)!");
+            return;
+        }
+
+        let total = physics + chemistry + biology;
+        let average = total / 3;
+
+        document.getElementById("result").innerHTML = `Tổng điểm: ${total} <br> Điểm trung bình: ${average.toFixed(2)}`;
+    }
+</script>
+</body>
+</html>
